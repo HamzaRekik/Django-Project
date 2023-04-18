@@ -1,0 +1,45 @@
+{% load static tailwind_tags%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Portfolio</title>
+    {% tailwind_css %}
+  </head>
+  <body class="bg-gray-100 h-screen ">
+    {% include 'navbar.html' %}
+    <div class="container mx-auto my-12 px-4"> 
+      <div class="flex-wrap items-center justify-between mb-8">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-8">Our Projects</h2>
+        <a href="{% url 'req_project' %}" class="inline-block bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">
+          Request Project
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {% for project in projects %}
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img
+            src="{{ project.image.url }}"
+            alt="Project 1"
+            class="w-full h-48 object-cover object-center"
+          />
+          <div class="p-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">
+              {{ project.libelle}}
+            </h3>
+            <p class="text-gray-600 mb-4">{{ project.description}}</p>
+            <a
+              href={% url 'project' pk=project.id  %}
+              class="inline-block bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600"
+            >
+              Details
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

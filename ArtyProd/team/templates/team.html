@@ -1,0 +1,60 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Our Team</title>
+    <!-- Tailwind CSS -->
+    {% tailwind_css %}
+  </head>
+  {% include 'navbar.html' %}
+  <body class="bg-gray-100 h-screen overflow-hidden">
+    <div
+      class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8"
+    >
+      <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <h2 class="text-center text-3xl font-extrabold text-gray-900">
+          Our Team
+        </h2>
+      </div>
+
+      <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {% for personne in personnes %}
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <img
+              class="h-48 w-full object-cover"
+              src="{{personne.photo.url}}"
+              alt="Team member 1"
+            />
+            <div class="px-4 py-4">
+              <h3 class="text-lg font-medium text-gray-900">
+                {{ personne.name }}
+              </h3>
+              <p class="text-gray-600">{{ personne.post }}</p>
+              <div class="mt-2 flex items-center">
+                <a
+                  href="{{ personne.file_cv }}"
+                  class="text-sm font-medium text-indigo-500"
+                  target="_blank"
+                >
+                  CV
+                </a>
+                <span class="mx-2 text-sm text-gray-400"> · </span>
+                <a
+                  href="{{ personne.linkedin_url }}"
+                  class="text-sm font-medium text-indigo-500"
+                >
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+{% load static tailwind_tags %}
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% tailwind_css %}
+  </head>
+  <body>
+    <nav class="bg-gray-900">
+      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="absolute inset-y-0 left-0 flex items-center">
+            <a href="{% url 'main' %}" class="text-white font-bold text-lg"
+              >ArtyProd</a
+            >
+          </div>
+
+          <!-- Menu button for mobile -->
+          <div
+            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+          >
+            <button
+              class="p-1 rounded-md text-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+              <!-- Heroicon name: outline/menu -->
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Links -->
+          <div class="hidden sm:block sm:ml-6">
+            <div class="flex space-x-4">
+              <a
+                href="{% url 'main' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >Home</a
+              >
+              <a
+                href="{% url 'team' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >Team</a
+              >
+              <a
+                href="{% url 'services' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >Services</a
+              >
+              <a
+                href="{% url 'portfolio' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >Portfolio</a
+              >
+              <a
+                href="{% url 'contact' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >Contact</a
+              >
+              {% if user.is_authenticated %}
+              <!-- Hide the login and sign up buttons if the user is authenticated -->
+              <a
+                href="{% url 'logout' %}"
+                class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0"
+                >Logout</a
+              >
+              <p
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                {{user.username}} </p>{% else %}
+                <a
+                  href="{% url 'login' %}"
+                  class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-blue-500 hover:bg-white mt-4 lg:mt-0"
+                  >Login</a
+                >
+                <a
+                  href="{% url 'signin' %}"
+                  class="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-500 border-blue-500 hover:border-transparent hover:text-white hover:bg-blue-500 mt-4 lg:mt-0"
+                  >Sign up</a
+                >
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>

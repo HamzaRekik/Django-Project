@@ -1,0 +1,66 @@
+{% load static tailwind_tags%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Our Services</title>
+    {% tailwind_css %}
+  </head>
+  {% include 'navbar.html' %}
+  <body class="bg-gray-100 h-screen">
+    <div class="mx-4">
+      <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-extrabold text-gray-900">Our Services</h2>
+          <p class="mt-4 text-gray-500">
+            We offer a wide range of services that cater to businesses of all
+            sizes, from startups to established companies. Our goal is to help
+            our clients achieve their vision and stand out in today's
+            competitive market.
+          </p>
+          <div class="mt-10">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {% for service in services %}
+              <div class="pt-6">
+                <div class="flow-root bg-gray-50 rounded-lg px-6 pb-8">
+                  <div class="-mt-6">
+                    <div>
+                      <span
+                        class="inline-flex items-center justify-center p-3 bg-indigo-500 rounded-md shadow-lg"
+                      >
+                        <!-- Icon for Service 1 -->
+                        <svg
+                          class="h-6 w-6 text-white"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            d="M12 22s8-4 8-10V6c0-6-8-6-8-6s-8 0-8 6v6c0 6 8 10 8 10z"
+                          ></path>
+                        </svg>
+                      </span>
+                    </div>
+                    <h3
+                      class="mt-8 text-lg font-medium text-gray-900 tracking-tight"
+                    >
+                      {{service.name}}
+                    </h3>
+                    <p class="mt-5 text-base text-gray-500">
+                      {{service.description}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
