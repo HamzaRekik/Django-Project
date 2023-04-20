@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from portfolio.models import *
 
 
 def main(request):
@@ -46,4 +47,6 @@ def logout_view(request):
 
 
 def blog_view(request):
-    return render(request, "blog.html")
+    articles = Article.objects.all()
+    context = {"articles": articles}
+    return render(request, "blog.html", context)

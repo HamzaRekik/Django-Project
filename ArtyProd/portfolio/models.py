@@ -28,10 +28,6 @@ class Project(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-
-
-class Article(models.Model):
     ARTICLE_TAGS = {
         ("Graphic design", "Graphic design"),
         ("Web design", "Web design"),
@@ -46,11 +42,18 @@ class Article(models.Model):
         ("Design tools", "Design tools"),
         ("Responsive design", "Responsive design"),
     }
+    name = models.CharField(max_length=50, choices=ARTICLE_TAGS)
+
+    def __str__(self):
+        return self.name
+
+
+class Article(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to="static/photos/")
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
-    tags = models.ManyToManyField(Tag, choices=ARTICLE_TAGS)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.title
