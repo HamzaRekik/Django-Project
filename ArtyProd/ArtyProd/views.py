@@ -43,3 +43,7 @@ def contact(request):
 def logout_view(request):
     logout(request)
     return redirect("main")
+
+
+def blog_view(request):
+    return render(request, "blog.html")

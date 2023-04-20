@@ -12,5 +12,6 @@ urlpatterns = [
     path("contact_us/", views.contact, name="contact"),
     path("services/", include("services.urls")),
     path("portfolio/", include("portfolio.urls")),
+    path("blogger/", views.blog_view, name="blog"),
     path("", views.main, name="main"),
 ]
