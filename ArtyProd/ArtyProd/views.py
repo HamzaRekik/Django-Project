@@ -50,3 +50,7 @@ def blog_view(request):
     articles = Article.objects.all()
     context = {"articles": articles}
     return render(request, "blog.html", context)
+
+def article_view(request,pk):
+    article = Article.objects.get(id=pk)
+    return render(request, 'article.html',{'article':article})

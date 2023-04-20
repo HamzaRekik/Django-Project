@@ -13,5 +13,6 @@ urlpatterns = [
     path("services/", include("services.urls")),
     path("portfolio/", include("portfolio.urls")),
     path("blogger/", views.blog_view, name="blog"),
+    path("article/<str:pk>", views.article_view, name="article"),
     path("", views.main, name="main"),
 ]
