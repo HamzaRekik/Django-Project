@@ -18,7 +18,9 @@
         </a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        
         {% for project in projects %}
+        {% if project.status != 'Required' %}
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <img
             src="{{ project.image.url }}"
@@ -29,7 +31,7 @@
             <h3 class="text-lg font-semibold text-gray-800 mb-2">
               {{ project.libelle}}
             </h3>
-            <p class="text-gray-600 mb-4">{{ project.description}}</p>
+            <p class="text-gray-600 mb-4">{{ project.description|truncatewords:30}}</p>
             <a
               href={% url 'project' pk=project.id  %}
               class="inline-block bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600"
@@ -38,6 +40,7 @@
             </a>
           </div>
         </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>

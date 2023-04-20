@@ -11,7 +11,7 @@ class Project(models.Model):
         ("In progress", "In progress"),
         ("Reviewing", "Reviewing"),
         ("Completed", "Completed"),
-        ("Suggested", "Suggested"),
+        ("Required", "Required"),
     ]
     libelle = models.CharField(max_length=50)
     type = models.ManyToManyField(Service, blank=True)
@@ -21,7 +21,7 @@ class Project(models.Model):
     team = models.OneToOneField(Team, on_delete=models.CASCADE, null=True)
     dateD = models.DateField(auto_now_add=True)
     dateF = models.DateField(blank=True, null=True)
-    status = models.CharField(choices=DONE, max_length=50, default="Suggested")
+    status = models.CharField(choices=DONE, max_length=50, default="Required")
 
     def __str__(self):
         return self.libelle

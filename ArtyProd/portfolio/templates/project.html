@@ -22,29 +22,37 @@
             {{ project.libelle }}
           </h2>
           <p class="text-gray-600 mb-4">{{ project.description }}</p>
-          {% for item in project.type.all %}
-          <p class="text-gray-600 mb-4">{{ item }}</p>
-          {% endfor %}
-          <p class="text-gray-600 mb-4">
-            Date debut: {{ project.dateD|date:"F j, Y" }}
-          </p>
+
+          <div class="flex">
+            <p class="text-black font-bold">Type :</p>
+            {% for item in project.type.all %}
+            <p class="text-gray-600 mb-4">{{ item }}{% if not forloop.last %} - {% endif %}</p>
+            {% endfor %}
+          </div>
+          <div class="flex">
+            <p class="text-gray-600 mb-4"></p>
+            <p class="text-black font-bold">Date debut : </p>
+            {{ project.dateD|date:"F j, Y" }}
+          </div>
           {% if project.dateF %}
-          <p class="text-gray-600 mb-4">
-            Date end: {{ project.dateF|date:"F j, Y" }}
-          </p>
+          <div class="flex">
+            <p class="text-gray-600 mb-4"></p>
+            <p class="text-black font-bold">Date end : </p>
+            {{ project.dateF|date:"F j, Y" }}
+          </div>
           {% endif %} {% if project.details %}
-          <p class="text-gray-600 mb-4">
+          <p class="text-gray-600 mt-4">
             <a
               href="{{ project.details }}"
               target="_blank"
               class="text-blue-500 hover:text-blue-700"
-              >Download File</a
+              >Details File</a
             >
           </p>
           {% endif %}
 
           <div
-            class="inline-block rounded-lg px-3 py-1 text-sm font-medium text-white bg-{{ status_color }}-500"
+            class="inline-block rounded-lg px-3 py-1 text-sm font-medium text-black"
           >
             {{ project.status }}
           </div>
