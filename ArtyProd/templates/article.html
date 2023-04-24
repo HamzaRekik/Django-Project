@@ -7,6 +7,18 @@
     <title>{{ article.title }}</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'favicon/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'faviconfavicon-16x16.png' %}"
+    />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% tailwind_css %}
   </head>
@@ -15,17 +27,28 @@
     <div class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 lg:px-8">
       <div class="bg-white shadow-md rounded-lg overflow-hidden flex mt-10">
         <div class="w-1/2">
-          <img src="{{ article.image.url }}" alt="" class="object-center h-60 w-full"/>
+          <img
+            src="{{ article.image.url }}"
+            alt=""
+            class="object-center h-60 w-full"
+          />
         </div>
         <div class="p-4 w-1/2">
-          <h2 class="text-3xl font-bold text-gray-800 mb-4">{{ article.title }}</h2>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            {{ article.title }}
+          </h2>
           <p class="text-gray-700 leading-relaxed">{{ article.body }}</p>
-          <div class=" mt-10 flex items-center space-x-4">
-            <span class="text-gray-600 text-sm inline-flex items-center mt-10">{{ article.date|date:"F j, Y" }}</span>
+          <div class="mt-10 flex items-center space-x-4">
+            <span class="text-gray-600 text-sm inline-flex items-center mt-10"
+              >{{ article.date|date:"F j, Y" }}</span
+            >
             <div class="flex px-10">
               <div class="flex flex-wrap mt-10">
                 {% for tag in article.tags.all %}
-                  <span class="px-2 bg-gray-200 text-gray-800 text-xs rounded-full">#{{ tag.name }}</span>
+                <span
+                  class="px-2 bg-gray-200 text-gray-800 text-xs rounded-full"
+                  >#{{ tag.name }}</span
+                >
                 {% endfor %}
               </div>
             </div>
@@ -34,5 +57,4 @@
       </div>
     </div>
   </body>
-  
 </html>

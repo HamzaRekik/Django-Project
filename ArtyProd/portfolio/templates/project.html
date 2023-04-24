@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Portfolio</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'favicon/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'faviconfavicon-16x16.png' %}"
+    />
     {% tailwind_css %}
   </head>
   <body class="bg-gray-100 h-screen">
@@ -26,18 +38,20 @@
           <div class="flex">
             <p class="text-black font-bold">Type :</p>
             {% for item in project.type.all %}
-            <p class="text-gray-600 mb-4">{{ item }}{% if not forloop.last %} - {% endif %}</p>
+            <p class="text-gray-600 mb-4">
+              {{ item }}{% if not forloop.last %} - {% endif %}
+            </p>
             {% endfor %}
           </div>
           <div class="flex">
             <p class="text-gray-600 mb-4"></p>
-            <p class="text-black font-bold">Date debut : </p>
+            <p class="text-black font-bold">Date debut :</p>
             {{ project.dateD|date:"F j, Y" }}
           </div>
           {% if project.dateF %}
           <div class="flex">
             <p class="text-gray-600 mb-4"></p>
-            <p class="text-black font-bold">Date end : </p>
+            <p class="text-black font-bold">Date end :</p>
             {{ project.dateF|date:"F j, Y" }}
           </div>
           {% endif %} {% if project.details %}
