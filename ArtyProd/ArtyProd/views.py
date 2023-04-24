@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from portfolio.models import *
+from services.models import *
 
 
 def main(request):
@@ -24,11 +25,9 @@ def login_view(request):
 
 def signin_view(request):
     if request.method == "POST":
-        # Retrieve user data from POST request
         username = request.POST.get("username")
         email = request.POST.get("email")
         password = request.POST.get("password")
-        # Create new user
         user = User.objects.create_user(
             username=username, email=email, password=password
         )
@@ -38,6 +37,17 @@ def signin_view(request):
 
 
 def contact(request):
+    # if User.is_authenticated():
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        message = request.POST.get("message")
+        contact = Contact.objects.create(name = name ,email= email , phone = phone , message = message)
+    # else : 
+    #     if request.method == "POST":
+    #         text = request.POST.get("message")
+    #         contact = Contact.objects.create(name = name ,email= email , phone = phone , text = text)
     return render(request, "contact.html")
 
 
