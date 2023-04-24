@@ -17,9 +17,9 @@ class Service(models.Model):
 
 
 class Contact (models.Model):
-    name = models.CharField( max_length=50)
-    email = models.EmailField( max_length=254)
-    phone = models.CharField(max_length=8)
+    name = models.CharField( max_length=50 ,blank=True)
+    email = models.EmailField( max_length=254, blank=True)
+    phone = models.CharField(max_length=8,blank=True)
     message = models.TextField()
 
     def __str__(self):

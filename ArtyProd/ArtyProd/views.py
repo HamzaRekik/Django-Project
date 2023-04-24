@@ -37,18 +37,20 @@ def signin_view(request):
 
 
 def contact(request):
-    # if User.is_authenticated():
-    if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        phone = request.POST.get("phone")
-        message = request.POST.get("message")
-        contact = Contact.objects.create(name = name ,email= email , phone = phone , message = message)
-    # else : 
-    #     if request.method == "POST":
-    #         text = request.POST.get("message")
-    #         contact = Contact.objects.create(name = name ,email= email , phone = phone , text = text)
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            message = request.POST.get("message")
+            contact = Contact.objects.create(name=request.user.username,email = request.user.email, message=message)
+    else:
+        if request.method == "POST":
+            name = request.POST.get("name")
+            email = request.POST.get("email")
+            phone = request.POST.get("phone")
+            message = request.POST.get("message")
+            contact = Contact.objects.create(name=name, email=email, phone=phone, message=message)
+   
     return render(request, "contact.html")
+
 
 
 def logout_view(request):
