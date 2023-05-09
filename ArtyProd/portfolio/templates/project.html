@@ -44,6 +44,12 @@
             {% endfor %}
           </div>
           <div class="flex">
+            <p class="text-black font-bold">Team :</p>
+            <p class="text-gray-600 mb-4">
+             {{project.team}}
+            </p>
+          </div>
+          <div class="flex">
             <p class="text-gray-600 mb-4"></p>
             <p class="text-black font-bold">Date debut :</p>
             {{ project.dateD|date:"F j, Y" }}
