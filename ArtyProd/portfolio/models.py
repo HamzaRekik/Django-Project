@@ -17,7 +17,7 @@ class Project(models.Model):
     type = models.ManyToManyField(Service, blank=True)
     description = models.TextField()
     details = models.FileField(upload_to="static/details/")
-    image = models.ImageField(upload_to="static/photos/")
+    image = models.ImageField(upload_to="media/")
     team = models.OneToOneField(Team, on_delete=models.CASCADE, null=True)
     dateD = models.DateField(auto_now_add=True)
     dateF = models.DateField(blank=True, null=True)
@@ -50,7 +50,7 @@ class Tag(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="static/photos/")
+    image = models.ImageField(upload_to="media/")
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
     tags = models.ManyToManyField(Tag, blank=True)

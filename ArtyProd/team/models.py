@@ -35,7 +35,7 @@ class Personne(models.Model):
     name = models.CharField( max_length=50)
     file_cv = models.FileField( upload_to='static/cv/', max_length=100 , blank=True)
     post = models.CharField(choices=POSTS, max_length=50 , default='Graphic Designer')
-    photo = models.ImageField( upload_to='static/photos/' , blank=True)
+    photo = models.ImageField( upload_to='media/' , blank=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE )
     linkedin_url = models.URLField()
 
